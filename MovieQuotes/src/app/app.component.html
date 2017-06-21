@@ -14,7 +14,9 @@
       <div class="form-group">
         <input required type="text" class="form-control" placeholder="From movie" name="movie" [(ngModel)]="formMovieQuote.movie">
       </div>
-      <button [disabled]="!movieQuoteForm.form.valid" type="submit" class="btn btn-default pull-right">Submit</button>
+      <button [disabled]="!movieQuoteForm.form.valid" type="submit" class="btn btn-default pull-right">
+        {{ formMovieQuote.$key ? 'Edit' : 'Submit' }}
+      </button>
       <div class="clearfix"></div>
     </form>
   </div>
@@ -26,12 +28,23 @@
       <tr>
         <th>Quote</th>
         <th>Movie</th>
+        <th>Edit</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let movieQuote of (movieQuotesStream | async) | reverse">
         <td>{{movieQuote.quote}}</td>
         <td>{{movieQuote.movie}}</td>
+        <td>
+          <button type="button" class="btn btn-success btn-xs"
+                  (click)="edit(movieQuote)">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+          <button type="button" class="btn btn-danger btn-xs"
+                  (click)="remove(movieQuote.$key)">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
