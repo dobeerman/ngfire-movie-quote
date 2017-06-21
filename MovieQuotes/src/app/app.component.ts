@@ -15,4 +15,13 @@ export class AppComponent {
     quote: '',
     movie: ''
   }
+
+  onSubmit(): void {
+    console.log('TODO submit:', this.movieQuote);
+
+    this.movieQuote = {
+      quote: '',
+      movie: ''
+    }
+  }
 };
