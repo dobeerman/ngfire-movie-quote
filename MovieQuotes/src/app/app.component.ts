@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 interface MovieQuote {
   movie: string;
@@ -34,7 +34,7 @@ export class AppComponent {
     try {
       this.movieQuotesStream = db.list(this.quotesPath);
     } catch (e) {
-      console.log("Error: ", e);
+      console.log('Error: ', e);
     }
   }
 
@@ -45,7 +45,7 @@ export class AppComponent {
       if (this.formMovieQuote.$key) {
         this.movieQuotesStream.update(this.formMovieQuote.$key, this.formMovieQuote);
       } else {
-      this.movieQuotesStream.push(this.formMovieQuote);
+        this.movieQuotesStream.push(this.formMovieQuote);
       }
 
 
@@ -54,7 +54,7 @@ export class AppComponent {
         'movie': ''
       };
     } catch (e) {
-      console.log("Form error: ", e);
+      console.log('Form error: ', e);
     }
   }
 
