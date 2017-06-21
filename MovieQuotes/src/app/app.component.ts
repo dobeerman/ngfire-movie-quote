@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-interface movieQuote {
+interface MovieQuote {
   movie: string;
   quote: string;
 }
@@ -11,17 +11,24 @@ interface movieQuote {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  movieQuote: movieQuote = {
+  formMovieQuote: MovieQuote = {
     quote: '',
     movie: ''
   }
 
-  onSubmit(): void {
-    console.log('TODO submit:', this.movieQuote);
+  movieQuotes: Array<MovieQuote> = [
+    {movie: "Rocky", quote: "Yo Adrian"},
+    {movie: "Terminator", quote: "I'll be back"},
+    {movie: "Titanic", quote: "I'm the king of the world!"},
+    {movie: "The Princess Bride", quote: "Hello. My name is Indigo Montoya. You killed my father. Prepare to die."},
+  ]
 
-    this.movieQuote = {
+  onSubmit(): void {
+    console.log('TODO submit:', this.formMovieQuote);
+    this.movieQuotes.unshift(this.formMovieQuote);
+    this.formMovieQuote = {
       quote: '',
       movie: ''
-    }
+    };
   }
-};
+}
